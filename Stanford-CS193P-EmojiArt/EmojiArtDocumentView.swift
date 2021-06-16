@@ -25,7 +25,7 @@ struct EmojiArtDocumentView: View {
         
         Rectangle()
             .foregroundColor(.yellow)
-        
+            .edgesIgnoringSafeArea(.bottom)
     }
 }
 
