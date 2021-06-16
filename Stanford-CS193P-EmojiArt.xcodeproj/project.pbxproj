@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DE039C36267A9BD0008AFAEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C35267A9BD0008AFAEF /* AppDelegate.swift */; };
+		DE039C38267A9BD0008AFAEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */; };
+		DE039C3A267A9BD0008AFAEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C39267A9BD0008AFAEF /* ContentView.swift */; };
+		DE039C3D267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE039C3B267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld */; };
+		DE039C3F267A9BD1008AFAEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE039C3E267A9BD1008AFAEF /* Assets.xcassets */; };
+		DE039C42267A9BD1008AFAEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */; };
+		DE039C45267A9BD1008AFAEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DE039C32267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stanford-CS193P-EmojiArt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE039C35267A9BD0008AFAEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DE039C39267A9BD0008AFAEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DE039C3C267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stanford_CS193P_EmojiArt.xcdatamodel; sourceTree = "<group>"; };
+		DE039C3E267A9BD1008AFAEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DE039C44267A9BD1008AFAEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE039C46267A9BD1008AFAEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DE039C2F267A9BD0008AFAEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DE039C29267A9BD0008AFAEF = {
+			isa = PBXGroup;
+			children = (
+				DE039C34267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt */,
+				DE039C33267A9BD0008AFAEF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DE039C33267A9BD0008AFAEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C32267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DE039C34267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C35267A9BD0008AFAEF /* AppDelegate.swift */,
+				DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */,
+				DE039C39267A9BD0008AFAEF /* ContentView.swift */,
+				DE039C3E267A9BD1008AFAEF /* Assets.xcassets */,
+				DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */,
+				DE039C46267A9BD1008AFAEF /* Info.plist */,
+				DE039C3B267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld */,
+				DE039C40267A9BD1008AFAEF /* Preview Content */,
+			);
+			path = "Stanford-CS193P-EmojiArt";
+			sourceTree = "<group>";
+		};
+		DE039C40267A9BD1008AFAEF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DE039C31267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE039C49267A9BD1008AFAEF /* Build configuration list for PBXNativeTarget "Stanford-CS193P-EmojiArt" */;
+			buildPhases = (
+				DE039C2E267A9BD0008AFAEF /* Sources */,
+				DE039C2F267A9BD0008AFAEF /* Frameworks */,
+				DE039C30267A9BD0008AFAEF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stanford-CS193P-EmojiArt";
+			productName = "Stanford-CS193P-EmojiArt";
+			productReference = DE039C32267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DE039C2A267A9BD0008AFAEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					DE039C31267A9BD0008AFAEF = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = DE039C2D267A9BD0008AFAEF /* Build configuration list for PBXProject "Stanford-CS193P-EmojiArt" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DE039C29267A9BD0008AFAEF;
+			productRefGroup = DE039C33267A9BD0008AFAEF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DE039C31267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DE039C30267A9BD0008AFAEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE039C45267A9BD1008AFAEF /* LaunchScreen.storyboard in Resources */,
+				DE039C42267A9BD1008AFAEF /* Preview Assets.xcassets in Resources */,
+				DE039C3F267A9BD1008AFAEF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE039C2E267A9BD0008AFAEF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE039C36267A9BD0008AFAEF /* AppDelegate.swift in Sources */,
+				DE039C38267A9BD0008AFAEF /* SceneDelegate.swift in Sources */,
+				DE039C3D267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld in Sources */,
+				DE039C3A267A9BD0008AFAEF /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE039C44267A9BD1008AFAEF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DE039C47267A9BD1008AFAEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE039C48267A9BD1008AFAEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DE039C4A267A9BD1008AFAEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Stanford-CS193P-EmojiArt/Preview Content\"";
+				DEVELOPMENT_TEAM = 2RCXCZR94X;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Stanford-CS193P-EmojiArt/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Mr.Z.Stanford-CS193P-EmojiArt";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DE039C4B267A9BD1008AFAEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Stanford-CS193P-EmojiArt/Preview Content\"";
+				DEVELOPMENT_TEAM = 2RCXCZR94X;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Stanford-CS193P-EmojiArt/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Mr.Z.Stanford-CS193P-EmojiArt";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE039C2D267A9BD0008AFAEF /* Build configuration list for PBXProject "Stanford-CS193P-EmojiArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE039C47267A9BD1008AFAEF /* Debug */,
+				DE039C48267A9BD1008AFAEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE039C49267A9BD1008AFAEF /* Build configuration list for PBXNativeTarget "Stanford-CS193P-EmojiArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE039C4A267A9BD1008AFAEF /* Debug */,
+				DE039C4B267A9BD1008AFAEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DE039C3B267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DE039C3C267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodel */,
+			);
+			currentVersion = DE039C3C267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodel */;
+			path = Stanford_CS193P_EmojiArt.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DE039C2A267A9BD0008AFAEF /* Project object */;
+}
