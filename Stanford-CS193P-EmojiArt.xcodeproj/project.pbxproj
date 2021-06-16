@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		DE039C36267A9BD0008AFAEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C35267A9BD0008AFAEF /* AppDelegate.swift */; };
 		DE039C38267A9BD0008AFAEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */; };
-		DE039C3A267A9BD0008AFAEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C39267A9BD0008AFAEF /* ContentView.swift */; };
+		DE039C3A267A9BD0008AFAEF /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */; };
 		DE039C3D267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE039C3B267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld */; };
 		DE039C3F267A9BD1008AFAEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE039C3E267A9BD1008AFAEF /* Assets.xcassets */; };
 		DE039C42267A9BD1008AFAEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */; };
 		DE039C45267A9BD1008AFAEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */; };
+		DE039C4D267A9D25008AFAEF /* EmojiArtDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE039C4C267A9D25008AFAEF /* EmojiArtDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE039C32267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stanford-CS193P-EmojiArt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE039C35267A9BD0008AFAEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE039C39267A9BD0008AFAEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentView.swift; sourceTree = "<group>"; };
 		DE039C3C267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stanford_CS193P_EmojiArt.xcdatamodel; sourceTree = "<group>"; };
 		DE039C3E267A9BD1008AFAEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DE039C44267A9BD1008AFAEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE039C46267A9BD1008AFAEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE039C4C267A9D25008AFAEF /* EmojiArtDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +62,8 @@
 			children = (
 				DE039C35267A9BD0008AFAEF /* AppDelegate.swift */,
 				DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */,
-				DE039C39267A9BD0008AFAEF /* ContentView.swift */,
+				DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */,
+				DE039C4C267A9D25008AFAEF /* EmojiArtDocument.swift */,
 				DE039C3E267A9BD1008AFAEF /* Assets.xcassets */,
 				DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */,
 				DE039C46267A9BD1008AFAEF /* Info.plist */,
@@ -150,8 +153,9 @@
 			files = (
 				DE039C36267A9BD0008AFAEF /* AppDelegate.swift in Sources */,
 				DE039C38267A9BD0008AFAEF /* SceneDelegate.swift in Sources */,
+				DE039C4D267A9D25008AFAEF /* EmojiArtDocument.swift in Sources */,
 				DE039C3D267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld in Sources */,
-				DE039C3A267A9BD0008AFAEF /* ContentView.swift in Sources */,
+				DE039C3A267A9BD0008AFAEF /* EmojiArtDocumentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
