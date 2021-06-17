@@ -11,6 +11,7 @@ class EmojiArtDocument: ObservableObject {
     static let palette: String = "EMOJIS"
     
     @Published private var emojiArt: EmojiArt = EmojiArt()
+    @Published private(set) var backgroundImage: UIImage?
     
     //MARK: - Intent(s):
     func addEmoji(_ emoji: String, at location: CGPoint, size: CGFloat) {
@@ -32,5 +33,26 @@ class EmojiArtDocument: ObservableObject {
     
     func setBackgroundURL(_ url: URL?) {
         emojiArt.backgroundURL = url?.imageURL
+        fetchBackgroundImageData()
+    }
+    
+    private func fetchBackgroundImageData() {
+        backgroundImage = nil
+        if let url = self.emojiArt.backgroundURL {
+            // put the url request to a background queue to avoid frozen app
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let imageData = try? Data(contentsOf: url) {
+                    //Put setting the background image to the main queue as it will change the view
+                    //IOS only allow user to change the view from the main queue
+                    //changing view from a background queue could case issues to the app. 
+                    DispatchQueue.main.async {
+                        // check if the url matches what the user last asked the app fetch from.
+                        if url == self.emojiArt.backgroundURL {
+                            self.backgroundImage = UIImage(data: imageData)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

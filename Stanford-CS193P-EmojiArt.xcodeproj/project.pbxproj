@@ -64,12 +64,12 @@
 		DE039C34267A9BD0008AFAEF /* Stanford-CS193P-EmojiArt */ = {
 			isa = PBXGroup;
 			children = (
+				DE039C55267AC073008AFAEF /* Helpers */,
+				DE039C54267AC057008AFAEF /* ViewModel */,
+				DE039C53267AC051008AFAEF /* Model */,
+				DE039C52267AC04B008AFAEF /* View */,
 				DE039C35267A9BD0008AFAEF /* AppDelegate.swift */,
 				DE039C37267A9BD0008AFAEF /* SceneDelegate.swift */,
-				DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */,
-				DE039C4C267A9D25008AFAEF /* EmojiArtDocument.swift */,
-				DE039C4E267AB5E9008AFAEF /* EmojiArt.swift */,
-				DE039C50267ABBF2008AFAEF /* EmojiArtExtensions.swift */,
 				DE039C3E267A9BD1008AFAEF /* Assets.xcassets */,
 				DE039C43267A9BD1008AFAEF /* LaunchScreen.storyboard */,
 				DE039C46267A9BD1008AFAEF /* Info.plist */,
@@ -85,6 +85,38 @@
 				DE039C41267A9BD1008AFAEF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DE039C52267AC04B008AFAEF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE039C53267AC051008AFAEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C4E267AB5E9008AFAEF /* EmojiArt.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE039C54267AC057008AFAEF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C4C267A9D25008AFAEF /* EmojiArtDocument.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DE039C55267AC073008AFAEF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DE039C50267ABBF2008AFAEF /* EmojiArtExtensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
