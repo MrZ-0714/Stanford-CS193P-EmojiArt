@@ -16,7 +16,7 @@ struct EmojiArt: Codable {
         return try? JSONEncoder().encode(self)
     }
     
-    struct Emoji: Identifiable, Codable {
+    struct Emoji: Identifiable, Codable, Hashable {
         let id: Int
         let text: String
         var x: Int //offset from the center
