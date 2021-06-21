@@ -36,6 +36,14 @@ struct EmojiArtDocumentView: View {
                         Text(emoji.text)
                             .font(animatableWithSize: emoji.fontSize * zoomScale)
                             .position(position(for: emoji, in: geometry.size))
+                            .onTapGesture {
+                                selectedEmojis.toggleSelection(of: emoji)
+                            }
+                            .background(
+                                Circle()
+                                    .stroke(Color.red)
+                                    .opacity(isSelected(emoji) ? 1 : 0)
+                            )
                     }
                 }
                 .clipped()
@@ -54,7 +62,7 @@ struct EmojiArtDocumentView: View {
         }
     }
     
-    //MARK: - Zooming
+    //MARK: - Zoom Gesture
     @State private var steadyStateZoomScale: CGFloat = 1.0
     @GestureState private var gestureZoomScale: CGFloat = 1.0
     
@@ -68,7 +76,6 @@ struct EmojiArtDocumentView: View {
                 gestureZoomScale = latestGestureScale
             }
             .onEnded { finalGestureScale in
-                print(finalGestureScale)
                 steadyStateZoomScale *= finalGestureScale
             }
     }
@@ -91,7 +98,7 @@ struct EmojiArtDocumentView: View {
         }
     }
     
-    //MARK: - Pan
+    //MARK: - Pan Gesture
     @State private var steadyStatePanOffset: CGSize = .zero
     @GestureState private var gesturePanOffest: CGSize = .zero
     
@@ -118,6 +125,7 @@ struct EmojiArtDocumentView: View {
         return location
     }
     
+    //MARK: - On drop function
     private func drop(providers: [NSItemProvider], at location: CGPoint) -> Bool {
         var found = providers.loadFirstObject(ofType: URL.self) { url in
             document.setBackgroundURL(url)
@@ -128,6 +136,14 @@ struct EmojiArtDocumentView: View {
             }
         }
         return found
+    }
+    
+    //MARK: - Selection
+    
+    @State private var selectedEmojis: Set<EmojiArt.Emoji> = []
+    
+    private func isSelected(_ matchingEmoji: EmojiArt.Emoji) -> Bool {
+        selectedEmojis.contains(matchingEmoji)
     }
     
     private let defaultEmojiSize: CGFloat = 40

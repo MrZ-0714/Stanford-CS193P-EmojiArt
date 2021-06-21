@@ -209,3 +209,15 @@ extension UIImage {
         return url
     }
 }
+
+extension Set where Element: Identifiable {
+    mutating func toggleSelection(of element: Element) {
+        if contains(matching: element) {
+           remove(element)
+        } else {
+           insert(element)
+        }
+        
+        print(self)
+    }
+}
