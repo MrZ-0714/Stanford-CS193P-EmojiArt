@@ -50,6 +50,8 @@ struct EmojiArtDocumentView: View {
                             4. Tapping on a selected emoji should unselect it.
                              */
                             .onTapGesture { selectedEmojis.toggleSelection(of: emoji) }
+                            .gesture(dragSelectedEmojis())
+                            //.onDrag({ return NSItemProvider(object: emoji.text as NSString) })
                             .overlay(
                                 Circle()
                                     .stroke(Color.red ,lineWidth: 2.0)
@@ -114,8 +116,16 @@ struct EmojiArtDocumentView: View {
     @State private var steadyStatePanOffset: CGSize = .zero
     @GestureState private var gesturePanOffest: CGSize = .zero
     
+    @State private var steadyStatePanOffsetForEmojis: CGSize = .zero
+    @GestureState private var gesturePanOffestForEmojis: CGSize = .zero
+    
+    
     private var panOffset: CGSize {
         (steadyStatePanOffset + gesturePanOffest) * zoomScale
+    }
+    
+    private var panOffsetForEmojis: CGSize {
+        (steadyStatePanOffsetForEmojis + gesturePanOffestForEmojis) * zoomScale
     }
     
     private func panGesture() -> some Gesture {
@@ -128,6 +138,21 @@ struct EmojiArtDocumentView: View {
             }
     }
     
+    private func dragSelectedEmojis() -> some Gesture {
+        DragGesture()
+            .updating($gesturePanOffestForEmojis) { latestDragGestureValue, gesturePanOffestForEmojis, transaction in
+                gesturePanOffestForEmojis = latestDragGestureValue.translation / zoomScale
+            }
+            .onEnded { finalDragGestureValue in
+                steadyStatePanOffsetForEmojis = steadyStatePanOffsetForEmojis + (finalDragGestureValue.translation / zoomScale)
+                
+                for emoji in selectedEmojis {
+                    withAnimation {
+                        document.moveEmoji(emoji, by: panOffsetForEmojis)
+                    }
+                }
+            }
+    }
     
     private func position(for emoji: EmojiArt.Emoji, in size: CGSize) -> CGPoint {
         var location = emoji.location
@@ -137,7 +162,7 @@ struct EmojiArtDocumentView: View {
         return location
     }
     
-    //MARK: - On drop function
+    //MARK: - Drop function
     private func drop(providers: [NSItemProvider], at location: CGPoint) -> Bool {
         var found = providers.loadFirstObject(ofType: URL.self) { url in
             document.setBackgroundURL(url)
@@ -158,6 +183,7 @@ struct EmojiArtDocumentView: View {
         selectedEmojis.contains(matchingEmoji)
     }
     
+    //MARK: - Parameters
     private let defaultEmojiSize: CGFloat = 40
 }
 
