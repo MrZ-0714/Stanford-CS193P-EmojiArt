@@ -35,15 +35,15 @@ struct EmojiArtDocumentView: View {
                     ForEach(document.emojis) { emoji in
                         Text(emoji.text)
                             .font(animatableWithSize: emoji.fontSize * zoomScale)
-                            .position(position(for: emoji, in: geometry.size))
                             .onTapGesture {
                                 selectedEmojis.toggleSelection(of: emoji)
                             }
-                            .background(
+                            .overlay(
                                 Circle()
-                                    .stroke(Color.red)
+                                    .stroke(Color.red ,lineWidth: 2.0)
                                     .opacity(isSelected(emoji) ? 1 : 0)
                             )
+                            .position(position(for: emoji, in: geometry.size))
                     }
                 }
                 .clipped()
