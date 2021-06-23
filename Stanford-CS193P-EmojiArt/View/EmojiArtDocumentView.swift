@@ -31,13 +31,25 @@ struct EmojiArtDocumentView: View {
                             .offset(panOffset)
                     )
                     .gesture(doubleTapToZoom(in: geometry.size))
+                     /*
+                     5. Single-tapping on the background of your EmojiArt (i.e. single-tapping anywhere
+                     except on an emoji) should deselect all emoji.
+                     */
+                    .onTapGesture { selectedEmojis.removeAll() }
                     
                     ForEach(document.emojis) { emoji in
                         Text(emoji.text)
                             .font(animatableWithSize: emoji.fontSize * zoomScale)
-                            .onTapGesture {
-                                selectedEmojis.toggleSelection(of: emoji)
-                            }
+                            /*
+                            2. Support the selection of one or more of the emojis which have been dragged into
+                            your EmojiArt document (i.e. you’re selecting the emojis in the document, not the ones
+                            in the palette at the top). You can show which emojis are selected in any way you’d
+                            like. The selection is not persistent (in other words, restarting your app will not
+                            preserve the selection).
+                            3. Tapping on an unselected emoji should select it.
+                            4. Tapping on a selected emoji should unselect it.
+                             */
+                            .onTapGesture { selectedEmojis.toggleSelection(of: emoji) }
                             .overlay(
                                 Circle()
                                     .stroke(Color.red ,lineWidth: 2.0)
