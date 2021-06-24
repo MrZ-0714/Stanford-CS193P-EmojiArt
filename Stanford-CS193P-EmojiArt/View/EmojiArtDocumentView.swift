@@ -31,7 +31,7 @@ struct EmojiArtDocumentView: View {
                             .offset(panOffset)
                     )
                     .gesture(doubleTapToZoom(in: geometry.size))
-                     /*
+                    /*
                      5. Single-tapping on the background of your EmojiArt (i.e. single-tapping anywhere
                      except on an emoji) should deselect all emoji.
                      */
@@ -40,17 +40,20 @@ struct EmojiArtDocumentView: View {
                     ForEach(document.emojis) { emoji in
                         Text(emoji.text)
                             .font(animatableWithSize: emoji.fontSize * zoomScale)
+                            .background(Color.white)
                             /*
-                            2. Support the selection of one or more of the emojis which have been dragged into
-                            your EmojiArt document (i.e. you’re selecting the emojis in the document, not the ones
-                            in the palette at the top). You can show which emojis are selected in any way you’d
-                            like. The selection is not persistent (in other words, restarting your app will not
-                            preserve the selection).
-                            3. Tapping on an unselected emoji should select it.
-                            4. Tapping on a selected emoji should unselect it.
+                             2. Support the selection of one or more of the emojis which have been dragged into
+                             your EmojiArt document (i.e. you’re selecting the emojis in the document, not the ones
+                             in the palette at the top). You can show which emojis are selected in any way you’d
+                             like. The selection is not persistent (in other words, restarting your app will not
+                             preserve the selection).
+                             3. Tapping on an unselected emoji should select it.
+                             4. Tapping on a selected emoji should unselect it.
                              */
-                            .onTapGesture { selectedEmojis.toggleSelection(of: emoji) }
-                            .gesture(dragSelectedEmojis())
+                            .onTapGesture {
+                                selectedEmojis.toggleSelection(of: emoji)
+                            }
+                            .gesture(isSelected(emoji) ? panSelectedEmojis(in: geometry.size) : nil)
                             //.onDrag({ return NSItemProvider(object: emoji.text as NSString) })
                             .overlay(
                                 Circle()
@@ -116,16 +119,8 @@ struct EmojiArtDocumentView: View {
     @State private var steadyStatePanOffset: CGSize = .zero
     @GestureState private var gesturePanOffest: CGSize = .zero
     
-    @State private var steadyStatePanOffsetForEmojis: CGSize = .zero
-    @GestureState private var gesturePanOffestForEmojis: CGSize = .zero
-    
-    
     private var panOffset: CGSize {
         (steadyStatePanOffset + gesturePanOffest) * zoomScale
-    }
-    
-    private var panOffsetForEmojis: CGSize {
-        (steadyStatePanOffsetForEmojis + gesturePanOffestForEmojis) * zoomScale
     }
     
     private func panGesture() -> some Gesture {
@@ -138,20 +133,36 @@ struct EmojiArtDocumentView: View {
             }
     }
     
-    private func dragSelectedEmojis() -> some Gesture {
+    @State private var steadyStatePanOffsetForEmojis: CGSize = .zero
+    @GestureState private var gesturePanOffestForEmojis: CGSize = .zero
+    
+    private var panOffsetForEmojis: CGSize {
+        (steadyStatePanOffsetForEmojis + gesturePanOffestForEmojis) * zoomScale
+    }
+    
+    private func panSelectedEmojis(in size: CGSize) -> some Gesture {
         DragGesture()
             .updating($gesturePanOffestForEmojis) { latestDragGestureValue, gesturePanOffestForEmojis, transaction in
                 gesturePanOffestForEmojis = latestDragGestureValue.translation / zoomScale
             }
             .onEnded { finalDragGestureValue in
                 steadyStatePanOffsetForEmojis = steadyStatePanOffsetForEmojis + (finalDragGestureValue.translation / zoomScale)
-                
                 for emoji in selectedEmojis {
+                    let newLocation = newLocationForEmoji(for: emoji, in: size)
+                    print(newLocation, panOffsetForEmojis, emoji)
                     withAnimation {
-                        document.moveEmoji(emoji, by: panOffsetForEmojis)
+                        document.moveEmoji(emoji, to: newLocation)
                     }
                 }
             }
+    }
+    
+    private func newLocationForEmoji(for emoji: EmojiArt.Emoji, in size: CGSize) -> CGPoint {
+        var location = emoji.location
+        location = CGPoint(x: location.x * zoomScale, y: location.y * zoomScale)
+        location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
+        location = CGPoint(x: location.x + panOffsetForEmojis.width, y: location.y + panOffsetForEmojis.height)
+        return location
     }
     
     private func position(for emoji: EmojiArt.Emoji, in size: CGSize) -> CGPoint {
@@ -175,16 +186,29 @@ struct EmojiArtDocumentView: View {
         return found
     }
     
-    //MARK: - Selection
+    //MARK: - Emoji Selection
     
     @State private var selectedEmojis: Set<EmojiArt.Emoji> = []
     
-    private func isSelected(_ matchingEmoji: EmojiArt.Emoji) -> Bool {
-        selectedEmojis.contains(matchingEmoji)
+    private func isSelected(_ emojiInput: EmojiArt.Emoji) -> Bool {
+        for selectedEmoji in selectedEmojis {
+            if emojiInput.id == selectedEmoji.id {
+                return true
+            }
+        }
+        return false
     }
     
     //MARK: - Parameters
     private let defaultEmojiSize: CGFloat = 40
+}
+
+extension EmojiArtDocumentView {
+    func printKeyPositions() {
+        print(steadyStatePanOffsetForEmojis,
+              gesturePanOffestForEmojis,
+              panOffsetForEmojis)
+    }
 }
 
 struct OptionalImage: View {
