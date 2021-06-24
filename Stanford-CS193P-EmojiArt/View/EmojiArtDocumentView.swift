@@ -68,7 +68,7 @@ struct EmojiArtDocumentView: View {
                 .gesture(zoomGesture())
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image", "public.text"], isTargeted: nil) { providers, location in
-                    var location = CGPoint(x: location.x, y: geometry.convert(location, from: .global).y)
+                    var location = CGPoint(x: location.x, y: location.y)
                     location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2 )
                     location = CGPoint(x: location.x - panOffset.width, y: location.y - panOffset.height)
                     location = CGPoint(x: location.x / zoomScale, y: location.y / zoomScale )
