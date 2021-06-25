@@ -54,6 +54,10 @@ struct EmojiArtDocumentView: View {
                                 selectedEmojis.toggleSelection(of: emoji)
                             }
                             .gesture(isSelected(emoji) ? panSelectedEmojis(in: geometry.size) : nil)
+                            .gesture(isSelected(emoji) ? zoomGesture() : nil)
+                            .onLongPressGesture {
+                                document.deleteEmoji(emoji)
+                            }
                             //.onDrag({ return NSItemProvider(object: emoji.text as NSString) })
                             .overlay(
                                 Circle()
@@ -91,9 +95,15 @@ struct EmojiArtDocumentView: View {
         MagnificationGesture()
             .updating( $gestureZoomScale ) { latestGestureScale, gestureZoomScale, transaction in
                 gestureZoomScale = latestGestureScale
+                for emoji in selectedEmojis {
+                    document.sacleEmoji(emoji, by: zoomScale)
+                }
             }
             .onEnded { finalGestureScale in
                 steadyStateZoomScale *= finalGestureScale
+                for emoji in selectedEmojis {
+                    document.sacleEmoji(emoji, by: zoomScale)
+                }
             }
     }
     
@@ -187,7 +197,6 @@ struct EmojiArtDocumentView: View {
     }
     
     //MARK: - Emoji Selection
-    
     @State private var selectedEmojis: Set<EmojiArt.Emoji> = []
     
     private func isSelected(_ emojiInput: EmojiArt.Emoji) -> Bool {
