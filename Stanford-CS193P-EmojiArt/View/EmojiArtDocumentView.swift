@@ -31,7 +31,6 @@ struct EmojiArtDocumentView: View {
                             .offset(panOffset)
                     )
                     .gesture(doubleTapToZoom(in: geometry.size))
-                    .gesture(selectedEmojis.isEmpty ? zoomGesture() : nil)
                     /*
                      5. Single-tapping on the background of your EmojiArt (i.e. single-tapping anywhere
                      except on an emoji) should deselect all emoji.
@@ -52,10 +51,9 @@ struct EmojiArtDocumentView: View {
                              4. Tapping on a selected emoji should unselect it.
                              */
                             .onTapGesture {
-                                selectedEmojis.toggleSelection(of: emoji)
+                                selectedEmojis.add(emoji)
                             }
                             .gesture(isSelected(emoji) ? panSelectedEmojis(in: geometry.size) : nil)
-                            .gesture(isSelected(emoji) ? zoomGesture() : nil)
                             .onLongPressGesture {
                                 document.deleteEmoji(emoji)
                             }
@@ -70,6 +68,7 @@ struct EmojiArtDocumentView: View {
                 }
                 .clipped()
                 .gesture(panGesture())
+                .gesture(zoomGesture(selectedEmojis.isEmpty))
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image", "public.text"], isTargeted: nil) { providers, location in
                     var location = CGPoint(x: location.x, y: location.y)
@@ -91,18 +90,26 @@ struct EmojiArtDocumentView: View {
         steadyStateZoomScale * gestureZoomScale
     }
     
-    private func zoomGesture() -> some Gesture {
+    private func zoomGesture(_ noSelectedEmojis: Bool) -> some Gesture {
         MagnificationGesture()
             .updating( $gestureZoomScale ) { latestGestureScale, gestureZoomScale, transaction in
-                gestureZoomScale = latestGestureScale
-                for emoji in selectedEmojis {
-                    document.sacleEmoji(emoji, by: gestureZoomScale)
+                
+                if !noSelectedEmojis {
+                    for emoji in selectedEmojis {
+                        document.sacleEmoji(emoji, by: latestGestureScale)
+                    }
+                } else {
+                    gestureZoomScale = latestGestureScale
                 }
             }
             .onEnded { finalGestureScale in
-                steadyStateZoomScale *= finalGestureScale
-                for emoji in selectedEmojis {
-                    document.sacleEmoji(emoji, by: zoomScale)
+                print("Finished pinch")
+                if !noSelectedEmojis {
+                    for emoji in selectedEmojis {
+                        document.sacleEmoji(emoji, by: finalGestureScale)
+                    }
+                } else {
+                    steadyStateZoomScale *= finalGestureScale
                 }
             }
     }
@@ -199,9 +206,9 @@ struct EmojiArtDocumentView: View {
     //MARK: - Emoji Selection
     @State private var selectedEmojis: Set<EmojiArt.Emoji> = []
     
-    private func isSelected(_ emojiInput: EmojiArt.Emoji) -> Bool {
+    private func isSelected(_ inputEmoji: EmojiArt.Emoji) -> Bool {
         for selectedEmoji in selectedEmojis {
-            if emojiInput.id == selectedEmoji.id {
+            if inputEmoji.id == selectedEmoji.id {
                 return true
             }
         }

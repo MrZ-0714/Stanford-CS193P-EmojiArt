@@ -211,7 +211,7 @@ extension UIImage {
 }
 
 extension Set where Element: Identifiable {
-    mutating func toggleSelection(of element: Element) {
+    mutating func add(_ element: Element) {
         if contains(matching: element) {
            remove(element)
         } else {
