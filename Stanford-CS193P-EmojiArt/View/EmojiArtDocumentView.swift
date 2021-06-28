@@ -31,6 +31,7 @@ struct EmojiArtDocumentView: View {
                             .offset(panOffset)
                     )
                     .gesture(doubleTapToZoom(in: geometry.size))
+                    .gesture(selectedEmojis.isEmpty ? zoomGesture() : nil)
                     /*
                      5. Single-tapping on the background of your EmojiArt (i.e. single-tapping anywhere
                      except on an emoji) should deselect all emoji.
@@ -69,7 +70,6 @@ struct EmojiArtDocumentView: View {
                 }
                 .clipped()
                 .gesture(panGesture())
-                .gesture(zoomGesture())
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image", "public.text"], isTargeted: nil) { providers, location in
                     var location = CGPoint(x: location.x, y: location.y)
@@ -96,7 +96,7 @@ struct EmojiArtDocumentView: View {
             .updating( $gestureZoomScale ) { latestGestureScale, gestureZoomScale, transaction in
                 gestureZoomScale = latestGestureScale
                 for emoji in selectedEmojis {
-                    document.sacleEmoji(emoji, by: zoomScale)
+                    document.sacleEmoji(emoji, by: gestureZoomScale)
                 }
             }
             .onEnded { finalGestureScale in
@@ -220,6 +220,7 @@ extension EmojiArtDocumentView {
     }
 }
 
+//MARK: - Optional Image sub-view
 struct OptionalImage: View {
     var uiImage: UIImage?
     
