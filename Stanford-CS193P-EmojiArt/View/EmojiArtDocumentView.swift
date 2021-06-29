@@ -93,7 +93,6 @@ struct EmojiArtDocumentView: View {
     private func zoomGesture(_ noSelectedEmojis: Bool) -> some Gesture {
         MagnificationGesture()
             .updating( $gestureZoomScale ) { latestGestureScale, gestureZoomScale, transaction in
-                
                 if !noSelectedEmojis {
                     for emoji in selectedEmojis {
                         document.sacleEmoji(emoji, by: latestGestureScale)
@@ -103,7 +102,6 @@ struct EmojiArtDocumentView: View {
                 }
             }
             .onEnded { finalGestureScale in
-                print("Finished pinch")
                 if !noSelectedEmojis {
                     for emoji in selectedEmojis {
                         document.sacleEmoji(emoji, by: finalGestureScale)
@@ -161,12 +159,16 @@ struct EmojiArtDocumentView: View {
         DragGesture()
             .updating($gesturePanOffestForEmojis) { latestDragGestureValue, gesturePanOffestForEmojis, transaction in
                 gesturePanOffestForEmojis = latestDragGestureValue.translation / zoomScale
+                print("gesturePanOffestForEmojis", gesturePanOffestForEmojis)
+                print("latestDragGestureValue: ", latestDragGestureValue.location)
+                
             }
             .onEnded { finalDragGestureValue in
                 steadyStatePanOffsetForEmojis = steadyStatePanOffsetForEmojis + (finalDragGestureValue.translation / zoomScale)
+                print("finalDragGestureValue: ", finalDragGestureValue.location)
                 for emoji in selectedEmojis {
                     let newLocation = newLocationForEmoji(for: emoji, in: size)
-                    print(newLocation, panOffsetForEmojis, emoji)
+                    print("\n newLocation: ", newLocation, "\n panOffsetForEmojis: \"", panOffsetForEmojis, "\n Emoji id: \"", emoji.id, "\"")
                     withAnimation {
                         document.moveEmoji(emoji, to: newLocation)
                     }
@@ -219,6 +221,7 @@ struct EmojiArtDocumentView: View {
     private let defaultEmojiSize: CGFloat = 40
 }
 
+//MARK: - Extension
 extension EmojiArtDocumentView {
     func printKeyPositions() {
         print(steadyStatePanOffsetForEmojis,
