@@ -9,19 +9,25 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
+    @State var chosenPalette: String = ""
     
     var body: some View {
         VStack {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(EmojiArtDocument.palette.map { String($0) }, id: \.self) { emoji in
-                        Text(emoji)
-                            .font(Font.system(size: defaultEmojiSize))
-                            .onDrag{ return NSItemProvider(object: emoji as NSString) }
+            HStack {
+                PaletteChooser(document: document, chosenPalette: $chosenPalette)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(chosenPalette.map { String($0) }, id: \.self) { emoji in
+                            Text(emoji)
+                                .font(Font.system(size: defaultEmojiSize))
+                                .onDrag{ return NSItemProvider(object: emoji as NSString) }
+                        }
                     }
                 }
+                .onAppear() {chosenPalette = document.defaultPalette}
+                .padding(.horizontal)
+                .layoutPriority(1)
             }
-            .padding(.horizontal)
             
             GeometryReader { geometry in
                 ZStack {
