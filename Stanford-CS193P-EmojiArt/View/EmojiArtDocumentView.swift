@@ -36,40 +36,48 @@ struct EmojiArtDocumentView: View {
                      except on an emoji) should deselect all emoji.
                      */
                     .onTapGesture { selectedEmojis.removeAll() }
-                    
-                    ForEach(document.emojis) { emoji in
-                        Text(emoji.text)
-                            .font(animatableWithSize: emoji.fontSize * zoomScale)
-                            .background(Color.white)
-                            /*
-                             2. Support the selection of one or more of the emojis which have been dragged into
-                             your EmojiArt document (i.e. you’re selecting the emojis in the document, not the ones
-                             in the palette at the top). You can show which emojis are selected in any way you’d
-                             like. The selection is not persistent (in other words, restarting your app will not
-                             preserve the selection).
-                             3. Tapping on an unselected emoji should select it.
-                             4. Tapping on a selected emoji should unselect it.
-                             */
-                            .onTapGesture {
-                                selectedEmojis.add(emoji)
-                            }
-                            .gesture(isSelected(emoji) ? panSelectedEmojis(in: geometry.size) : nil)
-                            .onLongPressGesture {
-                                document.deleteEmoji(emoji)
-                            }
-                            //.onDrag({ return NSItemProvider(object: emoji.text as NSString) })
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.red ,lineWidth: 2.0)
-                                    .opacity(isSelected(emoji) ? 1 : 0)
-                            )
-                            .position(position(for: emoji, in: geometry.size))
+                    if !isLoading {
+                        ForEach(document.emojis) { emoji in
+                            Text(emoji.text)
+                                .font(animatableWithSize: emoji.fontSize * zoomScale)
+                                .background(Color.white)
+                                /*
+                                 2. Support the selection of one or more of the emojis which have been dragged into
+                                 your EmojiArt document (i.e. you’re selecting the emojis in the document, not the ones
+                                 in the palette at the top). You can show which emojis are selected in any way you’d
+                                 like. The selection is not persistent (in other words, restarting your app will not
+                                 preserve the selection).
+                                 3. Tapping on an unselected emoji should select it.
+                                 4. Tapping on a selected emoji should unselect it.
+                                 */
+                                .onTapGesture {
+                                    selectedEmojis.add(emoji)
+                                }
+                                .gesture(isSelected(emoji) ? panSelectedEmojis(in: geometry.size) : nil)
+                                .onLongPressGesture {
+                                    document.deleteEmoji(emoji)
+                                }
+                                //.onDrag({ return NSItemProvider(object: emoji.text as NSString) })
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.red ,lineWidth: 2.0)
+                                        .opacity(isSelected(emoji) ? 1 : 0)
+                                )
+                                .position(position(for: emoji, in: geometry.size))
+                        }
+                    } else {
+                        Image(systemName: "timelapse").imageScale(.large)
                     }
+
                 }
                 .clipped()
                 .gesture(panGesture())
                 .gesture(zoomGesture(selectedEmojis.isEmpty))
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
+                // listen to published variables change in view model.
+                .onReceive(document.$backgroundImage) { image in
+                    zoomToFit(image, in: geometry.size)
+                }
                 .onDrop(of: ["public.image", "public.text"], isTargeted: nil) { providers, location in
                     var location = CGPoint(x: location.x, y: location.y)
                     location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2 )
@@ -80,6 +88,10 @@ struct EmojiArtDocumentView: View {
                 }
             }
         }
+    }
+    
+    var isLoading: Bool {
+        document.backgroundURL != nil && document.backgroundImage == nil
     }
     
     //MARK: - Zoom Gesture
@@ -195,7 +207,7 @@ struct EmojiArtDocumentView: View {
     //MARK: - Drop function
     private func drop(providers: [NSItemProvider], at location: CGPoint) -> Bool {
         var found = providers.loadFirstObject(ofType: URL.self) { url in
-            document.setBackgroundURL(url)
+            document.backgroundURL = url
         }
         if !found {
             found = providers.loadObjects(ofType: String.self) { string in

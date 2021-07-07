@@ -6,19 +6,23 @@
 //
 
 import SwiftUI
+import Combine
 
 class EmojiArtDocument: ObservableObject {
     static let palette: String = "EMOJISPLACEHOLDER"
     private static let Untitled: String = "EmojiArtDocument.Untitled"
     
-    @Published private var emojiArt: EmojiArt = EmojiArt() {
-        didSet {
-            UserDefaults.standard.set(emojiArt.json, forKey: EmojiArtDocument.Untitled)
-        }
-    }
+    @Published private var emojiArt: EmojiArt = EmojiArt()
+    
+    private var autosaveCancellable: AnyCancellable?
     
     init() {
         emojiArt = EmojiArt(json: UserDefaults.standard.data(forKey: EmojiArtDocument.Untitled)) ?? EmojiArt()
+        
+        //use publisher to achieve autosave and bind variables to VM.
+        autosaveCancellable = $emojiArt.sink() { emojiArt in
+            UserDefaults.standard.set(emojiArt.json, forKey: EmojiArtDocument.Untitled)
+        }
         fetchBackgroundImageData()
     }
     @Published private(set) var backgroundImage: UIImage?
@@ -56,28 +60,42 @@ class EmojiArtDocument: ObservableObject {
         }
     }
     
-    func setBackgroundURL(_ url: URL?) {
-        emojiArt.backgroundURL = url?.imageURL
-        fetchBackgroundImageData()
+    var backgroundURL: URL? {
+        get {
+            emojiArt.backgroundURL
+        }
+        set {
+            emojiArt.backgroundURL = newValue?.imageURL
+            fetchBackgroundImageData()
+        }
     }
+    
+    private var fetchImageCancellable: AnyCancellable?
     
     private func fetchBackgroundImageData() {
         backgroundImage = nil
         if let url = self.emojiArt.backgroundURL {
             // put the url request to a background queue to avoid frozen app
-            DispatchQueue.global(qos: .userInitiated).async {
-                if let imageData = try? Data(contentsOf: url) {
-                    //Put setting the background image to the main queue as it will change the view
-                    //IOS only allow user to change the view from the main queue
-                    //changing view from a background queue could case issues to the app. 
-                    DispatchQueue.main.async {
-                        // check if the url matches what the user last asked the app fetch from.
-                        if url == self.emojiArt.backgroundURL {
-                            self.backgroundImage = UIImage(data: imageData)
-                        }
-                    }
-                }
-            }
+            fetchImageCancellable?.cancel()
+            let session = URLSession.shared
+            let publisher = session.dataTaskPublisher(for: url)
+                .map { data, urlResponse in UIImage( data: data) }
+                .receive(on: DispatchQueue.main)
+                .replaceError(with: nil)
+            fetchImageCancellable = publisher.assign(to: \.backgroundImage, on: self)
+//            DispatchQueue.global(qos: .userInitiated).async {
+//                if let imageData = try? Data(contentsOf: url) {
+//                    //Put setting the background image to the main queue as it will change the view
+//                    //IOS only allow user to change the view from the main queue
+//                    //changing view from a background queue could case issues to the app.
+//                    DispatchQueue.main.async {
+//                        // check if the url matches what the user last asked the app fetch from.
+//                        if url == self.emojiArt.backgroundURL {
+//                            self.backgroundImage = UIImage(data: imageData)
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }
