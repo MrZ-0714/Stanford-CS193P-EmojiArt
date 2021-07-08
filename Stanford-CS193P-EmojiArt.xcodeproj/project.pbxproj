@@ -21,6 +21,8 @@
 		DEE41D2326950F2700CCE3CF /* Spinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2226950F2700CCE3CF /* Spinning.swift */; };
 		DEE41D25269626CE00CCE3CF /* PaletteChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */; };
 		DEE41D292696646400CCE3CF /* EmojiArtDocumentPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D282696646400CCE3CF /* EmojiArtDocumentPalette.swift */; };
+		DEE41D2C2696741900CCE3CF /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2A2696741900CCE3CF /* GridLayout.swift */; };
+		DEE41D2D2696741900CCE3CF /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2B2696741900CCE3CF /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		DEE41D2226950F2700CCE3CF /* Spinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
 		DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaletteChoose.swift; path = "Stanford-CS193P-EmojiArt/View/PaletteChoose.swift"; sourceTree = SOURCE_ROOT; };
 		DEE41D282696646400CCE3CF /* EmojiArtDocumentPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentPalette.swift; sourceTree = "<group>"; };
+		DEE41D2A2696741900CCE3CF /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		DEE41D2B2696741900CCE3CF /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			children = (
 				DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */,
 				DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */,
+				DEE41D2B2696741900CCE3CF /* Grid.swift */,
+				DEE41D2A2696741900CCE3CF /* GridLayout.swift */,
 				DEE41D2226950F2700CCE3CF /* Spinning.swift */,
 			);
 			path = View;
@@ -204,9 +210,11 @@
 				DEE41D292696646400CCE3CF /* EmojiArtDocumentPalette.swift in Sources */,
 				DE039C4F267AB5E9008AFAEF /* EmojiArt.swift in Sources */,
 				DE039C36267A9BD0008AFAEF /* AppDelegate.swift in Sources */,
+				DEE41D2C2696741900CCE3CF /* GridLayout.swift in Sources */,
 				DE039C38267A9BD0008AFAEF /* SceneDelegate.swift in Sources */,
 				DE039C4D267A9D25008AFAEF /* EmojiArtDocument.swift in Sources */,
 				DE039C3D267A9BD0008AFAEF /* Stanford_CS193P_EmojiArt.xcdatamodeld in Sources */,
+				DEE41D2D2696741900CCE3CF /* Grid.swift in Sources */,
 				DE039C3A267A9BD0008AFAEF /* EmojiArtDocumentView.swift in Sources */,
 				DEE41D2326950F2700CCE3CF /* Spinning.swift in Sources */,
 				DE7C6D1D267D3B4F001C8362 /* AnimatableSystemFontModifier.swift in Sources */,
