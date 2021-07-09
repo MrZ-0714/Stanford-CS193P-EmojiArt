@@ -23,8 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = EmojiArtDocumentView(document: EmojiArtDocument()).environment(\.managedObjectContext, context)
-
+//        let contentView = EmojiArtDocumentView(document: EmojiArtDocument()).environment(\.managedObjectContext, context)
+        let store = EmojiArtDocumentStore(named: "Emoji Art")
+        let contentView = EmojiArtDocumentChooser().environmentObject(store)
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
