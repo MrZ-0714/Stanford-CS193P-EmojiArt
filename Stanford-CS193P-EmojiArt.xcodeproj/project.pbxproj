@@ -22,7 +22,7 @@
 		DE3E33C1269CFBD300B0402A /* EditableText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3E33C0269CFBD300B0402A /* EditableText.swift */; };
 		DE7C6D1D267D3B4F001C8362 /* AnimatableSystemFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7C6D1C267D3B4F001C8362 /* AnimatableSystemFontModifier.swift */; };
 		DEE41D2326950F2700CCE3CF /* Spinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2226950F2700CCE3CF /* Spinning.swift */; };
-		DEE41D25269626CE00CCE3CF /* PaletteChoose.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */; };
+		DEE41D25269626CE00CCE3CF /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D24269626CE00CCE3CF /* PaletteChooser.swift */; };
 		DEE41D292696646400CCE3CF /* EmojiArtDocumentPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D282696646400CCE3CF /* EmojiArtDocumentPalette.swift */; };
 		DEE41D2C2696741900CCE3CF /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2A2696741900CCE3CF /* GridLayout.swift */; };
 		DEE41D2D2696741900CCE3CF /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE41D2B2696741900CCE3CF /* Grid.swift */; };
@@ -46,7 +46,7 @@
 		DE3E33C0269CFBD300B0402A /* EditableText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableText.swift; sourceTree = "<group>"; };
 		DE7C6D1C267D3B4F001C8362 /* AnimatableSystemFontModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatableSystemFontModifier.swift; sourceTree = "<group>"; };
 		DEE41D2226950F2700CCE3CF /* Spinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
-		DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaletteChoose.swift; path = "Stanford-CS193P-EmojiArt/View/PaletteChoose.swift"; sourceTree = SOURCE_ROOT; };
+		DEE41D24269626CE00CCE3CF /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaletteChooser.swift; path = "Stanford-CS193P-EmojiArt/View/PaletteChooser.swift"; sourceTree = SOURCE_ROOT; };
 		DEE41D282696646400CCE3CF /* EmojiArtDocumentPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentPalette.swift; sourceTree = "<group>"; };
 		DEE41D2A2696741900CCE3CF /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		DEE41D2B2696741900CCE3CF /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -110,11 +110,8 @@
 			children = (
 				DE3E33BE2697B8D800B0402A /* EmojiArtDocumentChooser.swift */,
 				DE039C39267A9BD0008AFAEF /* EmojiArtDocumentView.swift */,
-				DEE41D24269626CE00CCE3CF /* PaletteChoose.swift */,
-				DE3E33C0269CFBD300B0402A /* EditableText.swift */,
-				DEE41D2B2696741900CCE3CF /* Grid.swift */,
-				DEE41D2A2696741900CCE3CF /* GridLayout.swift */,
-				DEE41D2226950F2700CCE3CF /* Spinning.swift */,
+				DEE41D24269626CE00CCE3CF /* PaletteChooser.swift */,
+				DE214C7B269D155E0052E242 /* Helper */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +141,17 @@
 				DE039C50267ABBF2008AFAEF /* EmojiArtExtensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DE214C7B269D155E0052E242 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DEE41D2B2696741900CCE3CF /* Grid.swift */,
+				DEE41D2A2696741900CCE3CF /* GridLayout.swift */,
+				DEE41D2226950F2700CCE3CF /* Spinning.swift */,
+				DE3E33C0269CFBD300B0402A /* EditableText.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +238,7 @@
 				DE3E33BF2697B8D800B0402A /* EmojiArtDocumentChooser.swift in Sources */,
 				DE3E33C1269CFBD300B0402A /* EditableText.swift in Sources */,
 				DE7C6D1D267D3B4F001C8362 /* AnimatableSystemFontModifier.swift in Sources */,
-				DEE41D25269626CE00CCE3CF /* PaletteChoose.swift in Sources */,
+				DEE41D25269626CE00CCE3CF /* PaletteChooser.swift in Sources */,
 				DE039C51267ABBF2008AFAEF /* EmojiArtExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
