@@ -80,7 +80,7 @@ struct EmojiArtDocumentView: View {
                 .gesture(panGesture())
                 .gesture(zoomGesture(selectedEmojis.isEmpty))
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
-                // listen to published variables change in view model.
+                // listen to published variables backgroundImage change in view model.
                 .onReceive(document.$backgroundImage) { image in
                     zoomToFit(image, in: geometry.size)
                 }

@@ -37,6 +37,7 @@ class EmojiArtDocument: ObservableObject, Hashable, Equatable, Identifiable {
         }
         fetchBackgroundImageData()
     }
+    
     @Published private(set) var backgroundImage: UIImage?
     
     var emojis: [EmojiArt.Emoji] { emojiArt.emojis}
